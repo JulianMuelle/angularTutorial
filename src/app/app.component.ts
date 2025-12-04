@@ -17,5 +17,7 @@ export class AppComponent {
 
   users = DUMMY_USERS;
 
-
+  onSelectedUser(id: string) {
+    console.log("Im Parent ist die UserId " + id + " angekommen");
+  }
 }

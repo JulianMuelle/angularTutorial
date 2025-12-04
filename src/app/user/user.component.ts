@@ -1,4 +1,4 @@
-import {Component, computed, Input, input} from '@angular/core';
+import {Component, computed, EventEmitter, Input, input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -9,17 +9,29 @@ import {Component, computed, Input, input} from '@angular/core';
 })
 export class UserComponent {
 
-  // @Input({required: true}) avatar!: string;
-  // @Input({required: true}) name!: string;
+  @Input({required: true})
+  userId!: string;
 
-  avatar = input.required<string>();
-  name = input.required<string>();
+  @Input({required: true})
+  avatar!: string;
 
-  imagePath = computed(()=> {return 'assets/users/' + this.avatar()});
+  @Input({required: true})
+  name!: string
 
-  //get imagePath() {
-  //  return '../assets/users/' + this.avatar;
-  //}
+  // avatar = input.required<string>();
+  // name = input.required<string>();
+  // imagePath = computed(()=> {return 'assets/users/' + this.avatar()});
 
-  onSelectUser() {}
+  @Output()
+  select = new EventEmitter();
+
+  get imagePath() {
+  return '../assets/users/' + this.avatar;
+  }
+
+  onSelectUser() {
+    //outputte die User-Id an die Parent-Component
+    console.log("User mit der ID " + this.userId + " wurde angeklickt");
+    this.select.emit(this.userId);
+  }
 }
