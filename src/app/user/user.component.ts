@@ -9,14 +9,11 @@ import {Component, computed, EventEmitter, Input, input, Output, output} from '@
 })
 export class UserComponent {
 
-  @Input({required: true})
-  userId!: string;
-
-  @Input({required: true})
-  avatar!: string;
-
-  @Input({required: true})
-  name!: string
+  @Input({required: true}) user!: {
+  id: string;
+  avatar: string;
+  name: string;
+};
 
   // avatar = input.required<string>();
   // name = input.required<string>();
@@ -27,12 +24,12 @@ export class UserComponent {
 
 
   get imagePath() {
-  return '../assets/users/' + this.avatar;
+  return '../assets/users/' + this.user.avatar;
   }
 
   onSelectUser() {
     //outputte die User-Id an die Parent-Component
-    console.log("User mit der ID " + this.userId + " wurde angeklickt");
-    this.select.emit(this.userId);
+    console.log("User mit der ID " + this.user.id + " wurde angeklickt");
+    this.select.emit(this.user.id);
   }
 }
