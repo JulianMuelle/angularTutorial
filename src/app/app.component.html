@@ -1,23 +1,32 @@
 <app-header />
 
 <main>
-  <ul id="users">
-    <li>
-      <app-user
-        [userId]="users[0].id"
-        [avatar]="users[0].avatar"
-        [name]="users[0].name"
-        (select)="onSelectedUser($event)"
-      />
-    </li>
-    <li>
-      <app-user
-        [userId]="users[1].id"
-        [avatar]="users[1].avatar"
-        [name]="users[1].name"
-        (select)="onSelectedUser($event)"
-      />
-    </li>
-  </ul>
+  <div>
+    <ul id="users">
+      <li>
+        <app-user
+          [userId]="users[0].id"
+          [avatar]="users[0].avatar"
+          [name]="users[0].name"
+          (select)="onSelectedUser($event)"
+        />
+      </li>
+      <li>
+        <app-user
+          [userId]="users[1].id"
+          [avatar]="users[1].avatar"
+          [name]="users[1].name"
+          (select)="onSelectedUser($event)"
+        />
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <app-tasks
+    [currentUserName] ="this.currentUserName"
+    />
+  </div>
+
 </main>
 
