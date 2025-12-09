@@ -1,5 +1,11 @@
 import {Component, computed, EventEmitter, Input, input, Output, output} from '@angular/core';
 
+interface User {
+  id: string;
+  avatar: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -9,11 +15,7 @@ import {Component, computed, EventEmitter, Input, input, Output, output} from '@
 })
 export class UserComponent {
 
-  @Input({required: true}) user!: {
-  id: string;
-  avatar: string;
-  name: string;
-};
+  @Input({required: true}) user!: User;
 
   // avatar = input.required<string>();
   // name = input.required<string>();

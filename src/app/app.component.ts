@@ -19,7 +19,9 @@ export class AppComponent {
 
   users = DUMMY_USERS;
 
-  currentUserName: string | undefined;
+  currentUserName?:string;
+
+
 
   onSelectedUser(id: string) {
     for (let i = 0; i <= this.users.length; i++) {
