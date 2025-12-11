@@ -1,4 +1,5 @@
 import {Component, computed, EventEmitter, Input, input, Output, output} from '@angular/core';
+import {User} from "../models/user.model";
 
 @Component({
   selector: 'app-user',
@@ -9,11 +10,7 @@ import {Component, computed, EventEmitter, Input, input, Output, output} from '@
 })
 export class UserComponent {
 
-  @Input({required: true}) user!: {
-  id: string;
-  avatar: string;
-  name: string;
-};
+  @Input({required: true}) user!: User;
 
   // avatar = input.required<string>();
   // name = input.required<string>();

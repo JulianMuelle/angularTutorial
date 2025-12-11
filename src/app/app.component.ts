@@ -3,6 +3,7 @@ import {HeaderComponent} from "./header/header.component";
 import {UserComponent} from "./user/user.component";
 import {DUMMY_USERS} from './dummy-user';
 import {TasksComponent} from "./tasks/tasks.component";
+import {User} from "./models/user.model";
 
 @Component({
   selector: 'app-root',
@@ -19,13 +20,13 @@ export class AppComponent {
 
   users = DUMMY_USERS;
 
-  currentUserName: string | undefined;
+  selectedUser?: User;
 
   onSelectedUser(id: string) {
     for (let i = 0; i <= this.users.length; i++) {
       console.log('ID ' + id +  ' wird geprüft.');
       if (this.users[i].id == id) {
-        this.currentUserName = this.users[i].name;
+        this.selectedtUser = this.users[i].name;
         console.log('ID ' + id +  ' ist aktueller User');
         break;
       }

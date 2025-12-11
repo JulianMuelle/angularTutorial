@@ -1,28 +1,25 @@
 <app-header />
-
 <main>
   <div>
     <ul id="users">
-      <li>
-        <app-user
-          [user]="users[0]"
-          (select)="onSelectedUser($event)"
-        />
-      </li>
-      <li>
-        <app-user
-          [user]="users[1]"
-          (select)="onSelectedUser($event)"
-        />
-      </li>
+      @for (user of users; track user.id) {
+        <li>
+          <app-user
+            [user]="user"
+            (select)="onSelectedUser($event)"
+          />
+      }
     </ul>
   </div>
-
-  <div>
-    <app-tasks
-    [currentUserName] ="this.currentUserName"
-    />
-  </div>
-
+  @if(currentUserName){
+    <div>
+      <app-tasks
+        [userName] ="selectedUser.name"
+        [userId] = "selectedtUser.id"
+      />
+    </div>
+  } @else{
+    <p>Select as User to see his tasks!</p>
+  }
 </main>
 
