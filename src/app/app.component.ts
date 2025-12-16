@@ -23,13 +23,8 @@ export class AppComponent {
   selectedUser?: User;
 
   onSelectedUser(id: string) {
-    for (let i = 0; i <= this.users.length; i++) {
-      console.log('ID ' + id +  ' wird geprüft.');
-      if (this.users[i].id == id) {
-        this.selectedtUser = this.users[i].name;
-        console.log('ID ' + id +  ' ist aktueller User');
-        break;
-      }
-    }
+
+    this.selectedUser = this.users.find(user => user.id === id);
+
   }
 }

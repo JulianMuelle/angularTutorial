@@ -1,11 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
+import {AddTaskComponent} from "./add-task/add-task.component";
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
   imports: [
-    TaskComponent
+    TaskComponent,
+    AddTaskComponent
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
@@ -16,6 +19,11 @@ export class TasksComponent {
   userName!: string;
   @Input({required: true})
   userId!: string;
+  //Test für Input aus NewTaskComponent
+  @Input()
+  newTask?: Task;
+
+  isAddingNewTask: boolean = false;
 
   dummyTasks = [
     {
@@ -47,4 +55,12 @@ export class TasksComponent {
     return this.dummyTasks.filter((task) => task.userId === this.userId);
   }
 
+  protected onCompletedTask(completedTaskId: String) {
+    this.dummyTasks = this.dummyTasks.filter(task => task.id !== completedTaskId);
+  }
+
+  protected onStartAddTask() {
+    this.isAddingNewTask = true;
+    console.log("Neuer Task soll angelegt werden");
+  }
 }

@@ -11,11 +11,11 @@
       }
     </ul>
   </div>
-  @if(currentUserName){
+  @if(selectedUser){
     <div>
       <app-tasks
         [userName] ="selectedUser.name"
-        [userId] = "selectedtUser.id"
+        [userId] = "selectedUser.id"
       />
     </div>
   } @else{
