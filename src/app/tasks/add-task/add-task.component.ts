@@ -1,4 +1,4 @@
-import {Component, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { Task } from '../../models/task.model';
 
 @Component({
@@ -18,14 +18,21 @@ export class AddTaskComponent {
     dueDate: "1.1.2000"
   }
 
+  @Output()
   addTask = new EventEmitter<Task>();
 
+  @Output()
+  cancelTask = new EventEmitter<void>();
 
 
   onSubmitNewTaskForm(){
 
     this.addTask.emit(this.newTask);
     console.log("NeuerTask Output");
+  }
+
+  onCancelNewTaskForm(){
+    this.cancelTask.emit();
   }
 
 

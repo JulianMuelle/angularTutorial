@@ -20,8 +20,6 @@ export class TasksComponent {
   @Input({required: true})
   userId!: string;
   //Test für Input aus NewTaskComponent
-  @Input()
-  newTask?: Task;
 
   isAddingNewTask: boolean = false;
 
@@ -62,5 +60,19 @@ export class TasksComponent {
   protected onStartAddTask() {
     this.isAddingNewTask = true;
     console.log("Neuer Task soll angelegt werden");
+  }
+
+  protected onCancelAddTask() {
+    this.isAddingNewTask = false;
+    console.log("Neuer Task soll angelegt werden");
+  }
+
+  //Methode erstellt IMMUTABLE
+  protected onAddTask(newTask: Task){
+    this.dummyTasks = [
+      ...this.dummyTasks, newTask
+    ];
+    console.log("Task hinzugefügt");
+    console.log(newTask);
   }
 }

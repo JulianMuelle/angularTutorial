@@ -8,7 +8,8 @@
   <!--optional NewTaskComponent -->
   @if(isAddingNewTask){
     <app-add-task
-    (addTask) = "newTask"
+    (addTask) = "onAddTask($event)"
+    (cancelTask) = "onCancelAddTask()"
     />
   }
 
