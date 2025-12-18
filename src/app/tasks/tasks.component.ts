@@ -15,6 +15,8 @@ import { Task } from '../models/task.model';
 })
 export class TasksComponent {
 
+
+
   @Input({required: true})
   userName!: string;
   @Input({required: true})
@@ -84,4 +86,5 @@ export class TasksComponent {
     ];
     console.log("Neuer Task erfolgreich angelegt");
   }
+
 }
