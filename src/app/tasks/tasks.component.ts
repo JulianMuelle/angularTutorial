@@ -64,15 +64,24 @@ export class TasksComponent {
 
   protected onCancelAddTask() {
     this.isAddingNewTask = false;
-    console.log("Neuer Task soll angelegt werden");
   }
 
   //Methode erstellt IMMUTABLE
-  protected onAddTask(newTask: Task){
+  protected onAddTask(taskData:{title: string; summary: string; date: string}){
+    //baue ein Task-Objekt
+    let taskId = "t" + (this.dummyTasks.length+1);
+    console.log("Neue Task-Id: " + taskId);
+    let newTask: Task = {
+      id: taskId,
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date,
+    }
+    //erweitere das Array ->mit SpreadOperator
     this.dummyTasks = [
       ...this.dummyTasks, newTask
     ];
-    console.log("Task hinzugefügt");
-    console.log(newTask);
+    console.log("Neuer Task erfolgreich angelegt");
   }
 }
